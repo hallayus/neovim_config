@@ -1,18 +1,19 @@
-{ config, pkgs, ... }: {
-  programs.neovim = {
+{
+  description = "A very basic flake";
+
+  outputs = { self, nixpkgs }: {
+
+    # packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
+
+    # packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
+     
+    programs.neovim = {
       enable = true;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
-      plugins = with pkgs.vimPlugins; [
-        nvim-lspconfig
-        nvim-treesitter.withAllGrammars
-        # plenary-nvim
-        # gruvbox-material
-        # mini-nvim
-      ];
-      # Use the Nix package search engine to find
-      # even more plugins : https://search.nixos.org/packages
+    }; 
+    
   };
 }
